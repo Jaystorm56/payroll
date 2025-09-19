@@ -1,15 +1,14 @@
 
 import './App.css'
+import DashboardOverview from './components/pages/DashboardOverview'
 
 function App() {
  
 
   return (
     <>
-     
-      <p className=" text-blue-500">
-        payroll
-      </p>
+     <DashboardOverview/>
+      
     </>
   )
 }

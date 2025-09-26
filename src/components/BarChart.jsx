@@ -89,7 +89,7 @@ const PayrollBarChart = () => {
   }, []);
 
   return (
-    <div className="bg-white p-4 sm:p-5 md:p-6 border border-gray-200 card-hover fade-in mx-2 sm:mx-3 md:px-6">
+    <div className="bg-white p-4 sm:p-5 md:p-6 border border-gray-200 card-hover fade-in mx-2 sm:mx-3 md:px-6 rounded-[8px]">
       <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">{mockData.chartData.title}</h3>
       
       <div className="flex items-center justify-end mb-3 sm:mb-4">

@@ -1,6 +1,7 @@
 import PayrollBarChart from "../BarChart";
 import MetricsGrid from "../MetricsGrid";
 import EmployeeList from "../EmployeeList";
+import HomeBarChart from "../BarChart";
 
 const DashboardOverview = () => {
   return (
@@ -13,7 +14,7 @@ const DashboardOverview = () => {
         </div>
       </header>
       <MetricsGrid />
-      <PayrollBarChart />
+      <HomeBarChart/>
       <EmployeeList />
     </div>
   );

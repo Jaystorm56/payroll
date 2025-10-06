@@ -31,8 +31,8 @@ const MetricCard = ({ metric }) => {
   
   const baseClasses = "p-4 sm:p-4 md:p-6 rounded-xl border card-hover fade-in mx-2 md:mx-0 flex flex-col min-h-[150px]";
   const variantClasses = {
-    default: "bg-[#2222220D] border-gray-300",
-    alert: "bg-[#FF00000D] border-red-200"
+    default: "bg-[#2222220D] border-black",
+    alert: "bg-[#FF00000D] border-red-500"
   };
 
   const IconComponent = iconComponents[metric.icon.name];

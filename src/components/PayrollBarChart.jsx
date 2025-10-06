@@ -1,8 +1,7 @@
-import { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
-import { mockData } from '../mockData';
-
-const HomeBarChart = () => {
+import { useEffect, useRef } from "react";
+import { PayrollMockData } from "../mockData";
+import Chart from "chart.js/auto";
+const PayrollBarChart = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
 
@@ -17,15 +16,16 @@ const HomeBarChart = () => {
       chartInstance.current = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: mockData.chartData.data.map(item => item.month),
+          labels: PayrollMockData.chartData.data.map(item => item.month),
           datasets: [{
             label: 'Salary Paid',
-            data: mockData.chartData.data.map(item => item.salary),
+            data: PayrollMockData.chartData.data.map(item => item.salary),
             backgroundColor: 'rgba(67, 126, 247, 1)',
             borderColor: 'rgba(59, 130, 246, 1)',
             borderWidth: 1,
-            borderRadius: 6,
-            hoverBackgroundColor: '#437EF7'
+            hoverBackgroundColor: '#437EF7',
+            barPercentage: 0.9,
+            categoryPercentage: 0.9
           }]
         },
         options: {
@@ -39,9 +39,8 @@ const HomeBarChart = () => {
               },
               ticks: {
                 callback: function(value) {
-                  return '$' + value/1000 + 'k';
+                  return (value/1000).toLocaleString() + 'k';
                 },
-                // Responsive font size for y-axis
                 font: {
                   size: window.innerWidth < 768 ? 10 : 12
                 }
@@ -51,7 +50,6 @@ const HomeBarChart = () => {
               grid: {
                 display: false
               },
-              // Responsive font size for x-axis
               ticks: {
                 font: {
                   size: window.innerWidth < 768 ? 10 : 12
@@ -66,9 +64,9 @@ const HomeBarChart = () => {
             tooltip: {
               callbacks: {
                 label: function(context) {
-                  return new Intl.NumberFormat('en-US', {
+                  return new Intl.NumberFormat('en-Us', {
                     style: 'currency',
-                    currency: 'USD',
+                    currency: 'NGN',
                     minimumFractionDigits: 0,
                     maximumFractionDigits: 0
                   }).format(context.raw);
@@ -80,7 +78,6 @@ const HomeBarChart = () => {
       });
     }
 
-    // Cleanup function to destroy chart when component unmounts
     return () => {
       if (chartInstance.current) {
         chartInstance.current.destroy();
@@ -89,8 +86,8 @@ const HomeBarChart = () => {
   }, []);
 
   return (
-    <div className="bg-white p-4 sm:p-5 md:p-6 border border-gray-200 card-hover fade-in mx-2 sm:mx-3 md:px-6 rounded-[8px]">
-      <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">{mockData.chartData.title}</h3>
+    <div className="bg-white p-4 sm:p-5 md:p-6 border border-gray-200 rounded-lg shadow-sm">
+      <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">{PayrollMockData.chartData.title}</h3>
       
       <div className="flex items-center justify-end mb-3 sm:mb-4">
         <div className="flex items-center">
@@ -105,5 +102,4 @@ const HomeBarChart = () => {
     </div>
   );
 };
-
-export default HomeBarChart;
+export default PayrollBarChart;
